@@ -16,7 +16,7 @@ public class PlayerInput : MonoBehaviour
     private int count;
     private int numPickups = 8;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI winText;
+    public GameObject winText;
 
     void OnMove(InputValue value)
     {
@@ -27,7 +27,7 @@ public class PlayerInput : MonoBehaviour
     void Start()
     {
         count = 0;
-        winText.text = "";
+        winText.SetActive(false);
         SetCountText();
     }
 
@@ -56,7 +56,7 @@ public class PlayerInput : MonoBehaviour
         scoreText.text = "Score: " + count.ToString();
         if(count >= numPickups)
         {
-            winText.text = "You Win!";
+            winText.SetActive(true);
             Time.timeScale = 0;
         }
     }

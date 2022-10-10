@@ -16,7 +16,7 @@ public class Pickups : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0, transform.rotation.y + rotSpeed, 0));
+        transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime * rotSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
