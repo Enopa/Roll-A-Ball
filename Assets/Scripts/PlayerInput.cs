@@ -2,14 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerInput : MonoBehaviour
 {
-
+    //Movement Stuff
     public Vector2 moveValue;
     public float speed;
+
+    //ScoreStuff
     [SerializeField]
     private int count;
+    private int numPickups = 8;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI winText;
 
     void OnMove(InputValue value)
     {
@@ -19,7 +26,9 @@ public class PlayerInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        count = 0;   
+        count = 0;
+        winText.text = "";
+        SetCountText();
     }
 
     // Update is called once per frame
@@ -38,6 +47,16 @@ public class PlayerInput : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count++;
+            SetCountText();
+        }
+    }
+
+    private void SetCountText()
+    {
+        scoreText.text = "Score: " + count.ToString();
+        if(count >= numPickups)
+        {
+            winText.text = "You Win!";
         }
     }
 }
