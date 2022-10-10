@@ -57,6 +57,7 @@ public class PlayerInput : MonoBehaviour
         if(count >= numPickups)
         {
             winText.text = "You Win!";
+            Time.timeScale = 0;
         }
     }
 }
